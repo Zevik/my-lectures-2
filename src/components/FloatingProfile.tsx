@@ -206,12 +206,12 @@ const FloatingProfile: React.FC = () => {
     });
   }, []);
 
-  // Auto-hide quote after 4 seconds
+  // Auto-hide quote after 3 seconds
   useEffect(() => {
     if (showQuote) {
       const timer = setTimeout(() => {
         setShowQuote(false);
-      }, 4000); // 4 שניות
+      }, 3000); // 3 שניות
 
       return () => clearTimeout(timer);
     }
