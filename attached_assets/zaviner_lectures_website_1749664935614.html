@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>זאב אבינר - הרצאות וסדנאות מקצועיות</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="%23ffffff08" points="0,300 1000,300 1000,0 0,100"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        .contact-info span {
+            margin: 0 1rem;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+            background: #f8f9fa;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Lectures Grid */
+        .lectures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .lecture-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lecture-card:nth-child(2) { animation-delay: 0.2s; }
+        .lecture-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .lecture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .lecture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .lecture-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lecture-icon {
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+
+        .lecture-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .target-audience {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .target-audience h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .content-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-right: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .content-list li:hover {
+            transform: translateX(-5px);
+        }
+
+        .content-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 0.5rem;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .value-added {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .value-added h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 3rem 0;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-right: 4px solid #27ae60;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .lectures-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info span {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>זאב אבינר</h1>
+                <p class="subtitle">הרצאות וסדנאות מקצועיות</p>
+                <div class="contact-info">
+                    <span><i class="fas fa-envelope"></i> zaviner@gmail.com</span>
+                    <span><i class="fas fa-phone"></i> 052-541-0049</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#about" class="nav-item">אודות</a>
+                <a href="#lectures" class="nav-item">הרצאות וסדנאות</a>
+                <a href="#contact" class="nav-item">יצירת קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="intro fade-in-on-scroll" id="about">
+                <h2>ברוכים הבאים</h2>
+                <p>
+                    אני מציע שלוש הרצאות וסדנאות מרכזיות, המבוססות על ניסיון אישי רב שנים וידע מעמיק בתחומים שונים. 
+                    המטרה היא להעניק למשתתפים כלים מעשיים, ידע יישומי ותובנות שיסייעו להם בעסק ובחיים המקצועיים. 
+                    ההרצאות מועברות מתוך תשוקה אמיתית לתחומים, ובמטרה לתרום מהידע שצברתי.
+                </p>
+            </section>
+
+            <section id="lectures" class="fade-in-on-scroll">
+                <div class="lectures-grid">
+                    <div class="lecture-card">
+                        <h3>
+                            <i class="fas fa-robot lecture-icon"></i>
+                            בינה מלאכותית (AI) – מהקצה לקצה
+                        </h3>
+                        <p class="lecture-description">
+                            הרצאה מקיפה הסוקרת את עולם הבינה המלאכותית בצורה מקיפה, החל מהבסיס ועד ליישומים מתקדמים
+                        </p>
+                        
+                        <div class="target-audience">
+                            <h4><i class="fas fa-users"></i> קהל יעד:</h4>
+                            <p>בעלי עסקים, יזמים, אנשי שיווק, וכל מי שמעוניין להבין ולהשתמש בכוחה של הבינה המלאכותית</p>
+                        </div>
+
+                        <h4><i class="fas fa-list"></i> תכנים מרכזיים:</h4>
+                        <ul class="content-list">
+                            <li>יצירת מערכים ומצגות באמצעות AI</li>
+                            <li>בניית אתרים מאפס למאה</li>
+                            <li>סקירת כלי AI רלוונטיים</li>
+                            <li>העלאת אתר לאוויר עם דומיין אישי</li>
+                            <li>כלים פרקטיים ליישום מיידי</li>
+                        </ul>
+
+                        <div class="value-added">
+                            <h4><i class="fas fa-star"></i> ערך מוסף:</h4>
+                            <p>המשתתפים יצאו עם הבנה טובה יותר של עולם ה-AI ועם כלים פרקטיים שיוכלו ליישם באופן מיידי בעבודתם</p>
+                        </div>
+                    </div>
+
+                    <div class="lecture-card">
+                        <h3>
+                            <i class="fas fa-cogs lecture-icon"></i>
+                            כלים טכנולוגיים יעילים וטיפים דיגיטליים
+                        </h3>
+                        <p class="lecture-description">
+                            אוסף של מיליון טיפים, טריקים וכלים טכנולוגיים שיכולים לשדרג משמעותית את היעילות והפרודוקטיביות
+                        </p>
+                        
+                        <div class="target-audience">
+                            <h4><i class="fas fa-users"></i> קהל יעד:</h4>
+                            <p>כל אדם המשתמש במחשב ובטכנולוגיה, בדגש על בעלי עסקים, עצמאים, ועובדים המעוניינים לייעל את עבודתם</p>
+                        </div>
+
+                        <h4><i class="fas fa-list"></i> תכנים מרכזיים:</h4>
+                        <ul class="content-list">
+                            <li>תוספי כרום חיוניים</li>
+                            <li>טריקים וטיפים לשימוש יעיל במחשב</li>
+                            <li>עבודה חכמה עם כלי Google</li>
+                            <li>אוסף כלים טכנולוגיים מגוון</li>
+                            <li>כלים שימושיים למשתמשי מחשב</li>
+                        </ul>
+
+                        <div class="value-added">
+                            <h4><i class="fas fa-star"></i> ערך מוסף:</h4>
+                            <p>המשתתפים יקבלו ארגז כלים עשיר שיסייע להם לעבוד בצורה חכמה יותר, מהירה יותר ויעילה יותר</p>
+                        </div>
+                    </div>
+
+                    <div class="lecture-card">
+                        <h3>
+                            <i class="fas fa-briefcase lecture-icon"></i>
+                            מדריך מקיף לעצמאים ועוסקים
+                        </h3>
+                        <p class="lecture-description">
+                            הרצאה המספקת ידע מקיף ופרקטי בכל ההיבטים של ניהול עסק עצמאי, מבוססת על ניסיון אישי רב שנים
+                        </p>
+                        
+                        <div class="target-audience">
+                            <h4><i class="fas fa-users"></i> קהל יעד:</h4>
+                            <p>עצמאים, עוסקים פטורים, עוסקים מורשים, ויזמים בתחילת דרכם</p>
+                        </div>
+
+                        <h4><i class="fas fa-list"></i> תכנים מרכזיים:</h4>
+                        <ul class="content-list">
+                            <li>הוצאות מוכרות - מה כן ומה לא</li>
+                            <li>כלים שימושיים וכספיים</li>
+                            <li>קרנות פנסיה והשתלמות</li>
+                            <li>היבטים משפטיים בסיסיים</li>
+                            <li>הסכמים וחוזים</li>
+                            <li>העסקת עובדים</li>
+                            <li>כלים דיגיטליים לניהול עסק</li>
+                        </ul>
+
+                        <div class="value-added">
+                            <h4><i class="fas fa-star"></i> ערך מוסף:</h4>
+                            <p>ההרצאה תעשה סדר בכל הנושאים הבירוקרטיים והניהוליים של עסק עצמאי, ותספק ידע חיוני שיכול לחסוך כסף, זמן וכאבי ראש</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section fade-in-on-scroll">
+                <div class="about-content">
+                    <h2><i class="fas fa-heart"></i> הערה חשובה</h2>
+                    <div class="highlight">
+                        <p>
+                            <strong>כל ההרצאות והסדנאות מועברות מתוך רצון אמיתי לתרום מהידע והניסיון שלי.</strong>
+                        </p>
+                        <p>
+                            המטרה היא להעצים ולסייע למשתתפים להצליח בעסקיהם ובחייהם המקצועיים.
+                        </p>
+                    </div>
+                    <p>
+                        אני מאמין שהתכנים הללו יכולים להיות בעלי ערך רב לקהל היעד, 
+                        ואשמח לדון באפשרויות שילוב של הרצאות אלו בתוכנית שלכם.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> יצירת קשר</h2>
+            <p>אשמח לענות על כל שאלה ולדון באפשרויות שיתוף פעולה</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-user"></i>
+                    <h3>זאב אבינר</h3>
+                    <p>מרצה וכלכלן</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>אימייל</h3>
+                    <p>zaviner@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>טלפון</h3>
+                    <p>052-541-0049</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects for lecture cards
+        document.querySelectorAll('.lecture-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add active state for navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add loading animation on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Add click effects
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
