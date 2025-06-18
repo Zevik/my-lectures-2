@@ -228,79 +228,79 @@ const FloatingProfile: React.FC = () => {
     const animations = [
       // אנימציה 1: קפיצה ופרקדן
       {
-        initial: { scale: 0, rotate: -180, y: 100 },
+        initial: { scale: 0, rotate: -180, y: 20 },
         animate: { scale: 1, rotate: 0, y: 0 },
-        exit: { scale: 0, rotate: 180, opacity: 0, y: -100 },
+        exit: { scale: 0, rotate: 180, opacity: 0, y: -20 },
         transition: { type: "spring", stiffness: 300, damping: 15 }
       },
       // אנימציה 2: גלישה מצד
       {
-        initial: { x: -300, opacity: 0, rotate: -45 },
+        initial: { x: -50, opacity: 0, rotate: -15 },
         animate: { x: 0, opacity: 1, rotate: 0 },
-        exit: { x: 300, opacity: 0, rotate: 45 },
+        exit: { x: 50, opacity: 0, rotate: 15 },
         transition: { type: "spring", stiffness: 250, damping: 20 }
       },
       // אנימציה 3: הופעה מלמעלה
       {
-        initial: { y: -200, opacity: 0, scale: 0.5 },
+        initial: { y: -50, opacity: 0, scale: 0.8 },
         animate: { y: 0, opacity: 1, scale: 1 },
-        exit: { y: -200, opacity: 0, scale: 0.5 },
+        exit: { y: -50, opacity: 0, scale: 0.8 },
         transition: { type: "tween", duration: 0.5, ease: "easeOut" }
       },
       // אנימציה 4: פיצוץ מהמרכז
       {
-        initial: { scale: 0, opacity: 0, rotate: 360 },
+        initial: { scale: 0, opacity: 0, rotate: 180 },
         animate: { scale: 1, opacity: 1, rotate: 0 },
-        exit: { scale: 0, opacity: 0, rotate: -360 },
+        exit: { scale: 0, opacity: 0, rotate: -180 },
         transition: { type: "spring", stiffness: 200, damping: 10 }
       },
       // אנימציה 5: גלי אלסטיות
       {
-        initial: { scaleX: 0, scaleY: 1.5, opacity: 0 },
+        initial: { scaleX: 0, scaleY: 1.2, opacity: 0 },
         animate: { scaleX: 1, scaleY: 1, opacity: 1 },
-        exit: { scaleX: 0, scaleY: 1.5, opacity: 0 },
+        exit: { scaleX: 0, scaleY: 1.2, opacity: 0 },
         transition: { type: "spring", stiffness: 400, damping: 25 }
       },
       // אנימציה 6: טיפוח מתחת
       {
-        initial: { y: 300, opacity: 0, rotateX: 90 },
+        initial: { y: 30, opacity: 0, rotateX: 45 },
         animate: { y: 0, opacity: 1, rotateX: 0 },
-        exit: { y: 300, opacity: 0, rotateX: -90 },
+        exit: { y: 30, opacity: 0, rotateX: -45 },
         transition: { type: "spring", stiffness: 180, damping: 15 }
       },
       // אנימציה 7: סיבוב אלגנטי
       {
-        initial: { rotate: 180, scale: 0, opacity: 0 },
+        initial: { rotate: 90, scale: 0, opacity: 0 },
         animate: { rotate: 0, scale: 1, opacity: 1 },
-        exit: { rotate: -180, scale: 0, opacity: 0 },
+        exit: { rotate: -90, scale: 0, opacity: 0 },
         transition: { type: "tween", duration: 0.6, ease: "easeInOut" }
       },
       // אנימציה 8: זום מהפינה
       {
-        initial: { scale: 0, x: -100, y: -100, opacity: 0 },
+        initial: { scale: 0, x: -20, y: -20, opacity: 0 },
         animate: { scale: 1, x: 0, y: 0, opacity: 1 },
-        exit: { scale: 0, x: 100, y: 100, opacity: 0 },
+        exit: { scale: 0, x: 20, y: 20, opacity: 0 },
         transition: { type: "spring", stiffness: 220, damping: 18 }
       },
       // אנימציה 9: נדנדה חלקה
       {
-        initial: { rotateY: 90, opacity: 0, scale: 0.8 },
+        initial: { rotateY: 45, opacity: 0, scale: 0.9 },
         animate: { rotateY: 0, opacity: 1, scale: 1 },
-        exit: { rotateY: -90, opacity: 0, scale: 0.8 },
+        exit: { rotateY: -45, opacity: 0, scale: 0.9 },
         transition: { type: "spring", stiffness: 160, damping: 20 }
       },
       // אנימציה 10: גלש מלמטה
       {
-        initial: { y: 200, opacity: 0, skewY: 15 },
+        initial: { y: 40, opacity: 0, skewY: 8 },
         animate: { y: 0, opacity: 1, skewY: 0 },
-        exit: { y: -200, opacity: 0, skewY: -15 },
+        exit: { y: -40, opacity: 0, skewY: -8 },
         transition: { type: "spring", stiffness: 240, damping: 22 }
       },
       // אנימציה 11: פולס עדין
       {
         initial: { scale: 0, opacity: 0 },
         animate: { 
-          scale: [0, 1.2, 1], 
+          scale: [0, 1.1, 1], 
           opacity: [0, 0.8, 1] 
         },
         exit: { scale: 0, opacity: 0 },
@@ -311,26 +311,26 @@ const FloatingProfile: React.FC = () => {
       },
       // אנימציה 12: מפרח כמו פרח
       {
-        initial: { scale: 0, rotate: -90, transformOrigin: "bottom center" },
+        initial: { scale: 0, rotate: -45, transformOrigin: "center center" },
         animate: { scale: 1, rotate: 0 },
-        exit: { scale: 0, rotate: 90, opacity: 0 },
+        exit: { scale: 0, rotate: 45, opacity: 0 },
         transition: { type: "spring", stiffness: 300, damping: 25 }
       },
       // אנימציה 13: גלישה אלכסונית
       {
-        initial: { x: -200, y: -200, opacity: 0, rotate: 45 },
+        initial: { x: -30, y: -30, opacity: 0, rotate: 22 },
         animate: { x: 0, y: 0, opacity: 1, rotate: 0 },
-        exit: { x: 200, y: 200, opacity: 0, rotate: -45 },
+        exit: { x: 30, y: 30, opacity: 0, rotate: -22 },
         transition: { type: "spring", stiffness: 190, damping: 18 }
       },
       // אנימציה 14: נשימה רכה
       {
-        initial: { scale: 0.3, opacity: 0 },
+        initial: { scale: 0.5, opacity: 0 },
         animate: { 
-          scale: [0.3, 1.1, 1], 
+          scale: [0.5, 1.05, 1], 
           opacity: [0, 0.7, 1] 
         },
-        exit: { scale: 0.3, opacity: 0 },
+        exit: { scale: 0.5, opacity: 0 },
         transition: { 
           scale: { times: [0, 0.7, 1], duration: 0.9 },
           opacity: { duration: 0.4 }
@@ -338,9 +338,9 @@ const FloatingProfile: React.FC = () => {
       },
       // אנימציה 15: סיבוב תלת-ממדי
       {
-        initial: { rotateX: 180, rotateY: 180, scale: 0, opacity: 0 },
+        initial: { rotateX: 90, rotateY: 90, scale: 0, opacity: 0 },
         animate: { rotateX: 0, rotateY: 0, scale: 1, opacity: 1 },
-        exit: { rotateX: -180, rotateY: -180, scale: 0, opacity: 0 },
+        exit: { rotateX: -90, rotateY: -90, scale: 0, opacity: 0 },
         transition: { type: "spring", stiffness: 150, damping: 20 }
       }
     ];
@@ -383,9 +383,13 @@ const FloatingProfile: React.FC = () => {
           {/* Glow effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-orange-400 rounded-full blur-lg opacity-60 animate-pulse" />
           
-          {/* Click-me emoji container */}
+          {/* Click-me image container */}
           <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center">
-            <div className="text-4xl">👆</div>
+            <img 
+              src="/click-on-me.png" 
+              alt="לחץ עלי" 
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Pulsing ring */}
@@ -435,11 +439,16 @@ const FloatingProfile: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60] flex items-center justify-center p-4 pointer-events-none"
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60] flex items-center justify-center p-4 pointer-events-none overflow-hidden"
           >
             <motion.div
               {...getQuoteAnimation()}
-              className="bg-white rounded-3xl p-8 max-w-md mx-auto shadow-2xl relative pointer-events-auto"
+              className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative pointer-events-auto"
+              style={{
+                maxWidth: 'calc(100vw - 2rem)',
+                maxHeight: 'calc(100vh - 2rem)',
+                minWidth: '300px'
+              }}
             >
               {/* Quote text */}
               <div className="text-center">
